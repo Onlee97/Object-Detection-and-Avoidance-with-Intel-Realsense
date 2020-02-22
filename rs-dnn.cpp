@@ -12,8 +12,8 @@
 #include "../cv-helpers.hpp"
 #include <time.h>
 
-const size_t inWidth = 300;
-const size_t inHeight = 300;
+const size_t inWidth = 150;
+const size_t inHeight = 150;
 const float WHRatio = inWidth / (float)inHeight;
 const float inScaleFactor = 0.007843f;
 const float meanVal = 127.5;
@@ -32,7 +32,7 @@ int main(int argc, char** argv) try
     using namespace rs2;
     using namespace std;
 
-    const char* objectToDetect = "bottle";
+    const char* objectToDetect = "person";
 
     Net net = readNetFromCaffe("MobileNetSSD_deploy.prototxt",
         "MobileNetSSD_deploy.caffemodel");
@@ -120,16 +120,16 @@ int main(int argc, char** argv) try
                 // use depht data in general
                 Scalar m = mean(depth_mat(object));
 
-                double beepFrequency = 1000*(0.052+0.26*m[0]);  // The closer the object, the higher the beepFrequency.
+                double beepFrequency = 52+260*m[0];  // The closer the object, the higher the beepFrequency.
 
                 ostringstream ss;
                 if (classNames[objectClass] == objectToDetect) {
                     ss << classNames[objectClass] << " ";
                     ss << setprecision(2) << m[0] << " meters away";
                     //ss << std::setprecision(2) << beepFrequency << " beeps away";
-                    cout << '\a';
-                    cout << endl;
+                    Beep(1000,300);
                     Sleep(beepFrequency);
+                    //Sleep(beepFrequency);
                     //cout << '\a';
                    
                 }
