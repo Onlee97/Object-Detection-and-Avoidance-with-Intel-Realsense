@@ -15,9 +15,9 @@ Software
 
 ## User Manual
 There're 3 modes:
-- [Obstacle Avoidance](Obstacle Avoidance)
-- [Find objects](Find objects )
-- [Describe the surrounding environment](Describe the surrounding environment)
+- [Obstacle Avoidance](#obstacle-avoidance)
+- [Find objects](#find-objects )
+- [Describe the surrounding environment](#describe-the-surrounding-environment)
 
 ### Obstacle Avoidance
 As the user move, the device detects the obstacles in the person view and then signal the user about them by generate the "beep" sounds. The closer the object, the louder and faster the sound is. The system also keeps track of the velocity of the moving objects in order to avoid sudden collision. 
