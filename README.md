@@ -2,7 +2,7 @@
 ## Objective
 The goal of the project is to develop a device that allows visually impaired people navigate around without much dependence on other people or cumbersome tool. It also helps the blind get more insight into the surroundings and locate specific objects with ease. 
 
-We're using [Intel RealSense depth camera D435](https://www.intelrealsense.com/depth-camera-d435/) for object avoidance and detection tasks. The camera sends images and depth details to Jetson Nano, a powerful microcomputer developed by Nvidia, for real-time processing. The camera and processor weigh approximately 50 grams in total, making it an extremly small and lightweight device that is comfortable to carry around. 
+We're using [Intel RealSense depth camera D435](https://www.intelrealsense.com/depth-camera-d435/) for object avoidance and detection tasks. The camera sends images and depth details to [Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/), a powerful microcomputer developed by Nvidia, for real-time processing. The camera and processor weigh approximately 50 grams in total, making it an extremly small and lightweight device that is comfortable to carry around. 
 
 ## Requirements
 Hardware
