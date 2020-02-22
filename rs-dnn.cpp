@@ -112,10 +112,13 @@ int main(int argc, char** argv) try
                 // use depht data in general
                 Scalar m = mean(depth_mat(object));
 
+                double beepFrequency = 0.052+0.26*m[0];  // The closer the object, the higher the beepFrequency.
+
                 std::ostringstream ss;
                 if (classNames[objectClass] == objectToDetect) {
                     ss << classNames[objectClass] << " ";
                     ss << std::setprecision(2) << m[0] << " meters away";
+                    ss << std::setprecision(2) << beepFrequency << " beeps away";
                 }
                 else {
                     ss << "";
