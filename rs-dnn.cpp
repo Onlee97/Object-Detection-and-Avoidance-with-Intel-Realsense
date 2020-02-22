@@ -24,6 +24,8 @@ int main(int argc, char** argv) try
     using namespace cv::dnn;
     using namespace rs2;
 
+    const char* objectToDetect = "person";
+
     Net net = readNetFromCaffe("MobileNetSSD_deploy.prototxt",
         "MobileNetSSD_deploy.caffemodel");
 
@@ -111,7 +113,7 @@ int main(int argc, char** argv) try
                 Scalar m = mean(depth_mat(object));
 
                 std::ostringstream ss;
-                if (classNames[objectClass] == "person") {
+                if (classNames[objectClass] == objectToDetect) {
                     ss << classNames[objectClass] << " ";
                     ss << std::setprecision(2) << m[0] << " meters away";
                 }
