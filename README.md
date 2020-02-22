@@ -11,7 +11,7 @@ Hardware
 
 Software 
 - [Intel Realsense SDK 2.0](https://github.com/IntelRealSense/librealsense)
-- OpenCV 4.1.1 with extra modules
+- [OpenCV 4.1.1 with extra modules](https://github.com/opencv/opencv)
 
 ## User Manual
 There're 3 modes:
