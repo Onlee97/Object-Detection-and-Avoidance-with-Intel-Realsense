@@ -24,7 +24,7 @@ As the user moves, the device detects the obstacles in the person view and then 
 
 ### Find objects 
 "Where is my wallet?", "Where is my yellow hat?", "Where are my jeans?"
-This project is the answer to these questions. The user can ask questions to .., and the device will analyze the voice and give instructions where to find the objects through the hearing device.  
+</br>This project is the answer to these questions. The user can ask questions to .., and the device will analyze the voice and give instructions where to find the objects through the hearing device.  
 
 ### Describe the surrounding environment
 With a view to providing the users more insight into their surroundings, we implement image captioning feature to describe the front view of the user. 
