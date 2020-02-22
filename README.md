@@ -1,4 +1,4 @@
-# Obstacle Avoidance and Object Detection for the Blind (VD-VIP)
+# Obstacle Avoidance and Object Detection for the Blind 
 ## Objective
 The goal of the project is to develop a device that allows visually impaired people navigate around without much dependence on other people or cumbersome tool. It also helps the blind get more insight into the surroundings and locate specific objects with ease. 
 
