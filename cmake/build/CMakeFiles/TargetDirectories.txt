@@ -1,0 +1,3 @@
+/home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles/edit_cache.dir
+/home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles/rebuild_cache.dir
+/home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles/capture.dir
