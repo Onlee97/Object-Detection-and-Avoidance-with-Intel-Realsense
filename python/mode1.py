@@ -16,13 +16,13 @@ import time
 
 def startRsPipeline():
 	# Configure depth and color streams
-    pipeline = rs.pipeline()
-    config = rs.config()
-    config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-    config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-    # Start streaming
-    pipeline.start(config)
-    return pipeline
+	pipeline = rs.pipeline()
+	config = rs.config()
+	config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+	config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+	# Start streaming
+	pipeline.start(config)
+	return pipeline
 
 delayTime = 0.5
 def beepLeft(duration):
@@ -38,13 +38,13 @@ def beepRight(duration):
 	#os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
 	os.system('spd-say "right"')
 	time.sleep(delayTime)
-  
+
 def beepFront(duration):
-    freq = 1000
-    duration = 0.2
-    #os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
-	  os.system('spd-say "front"')
-    time.sleep(delayTime)
+	freq = 1000
+	duration = 0.2
+	#os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
+	os.system('spd-say "front"')
+	time.sleep(delayTime)
 
 def loop(pipeline):
 	width = 640
@@ -89,20 +89,20 @@ def loop(pipeline):
 	# if minDepthRight < depthThreshold and minDepthRight < depthThreshold:
 	# 	print("Right: ", minDepthRight, " | Left: ", minDepthLeft)
 	if minDepthRight < depthThreshold:
-			if minXRight < (width*3/4):
-				print("Front: ", minDepthRight)
-				beepFront(minDepthRight)
-			else:
-				print("Right: ", minDepthRight)
-				beepRight(minDepthRight)
-		if minDepthLeft < depthThreshold:
-			if minXLeft > (width/4):
-				print("Front: ", minDepthLeft)
-				beepFront(minDepthLeft)
-			else:
-				print("Left: ", minDepthLeft)
-				beepLeft(minDepthLeft)
-	# depth_image = np.asanyarray(depth_frame.get_data())
+		if minXRight < (width*3/4):
+			print("Front: ", minDepthRight)
+			beepFront(minDepthRight)
+		else:
+			print("Right: ", minDepthRight)
+			beepRight(minDepthRight)
+	if minDepthLeft < depthThreshold:
+		if minXLeft > (width/4):
+			print("Front: ", minDepthLeft)
+			beepFront(minDepthLeft)
+		else:
+			print("Left: ", minDepthLeft)
+			beepLeft(minDepthLeft)
+# depth_image = np.asanyarray(depth_frame.get_data())
 	# color_image = np.asanyarray(color_frame.get_data())
 
 	# # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
