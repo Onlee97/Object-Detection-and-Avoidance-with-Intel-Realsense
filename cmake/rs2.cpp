@@ -3,7 +3,9 @@
 
 #include <librealsense2/rs.hpp> // Include RealSense Cross Platform API
 #include <iostream>             // for cout
+#include <opencv2/opencv.hpp>
 
+using namespace cv;
 // Hello RealSense example demonstrates the basics of connecting to a RealSense device
 // and taking advantage of depth data
 int main(int argc, char * argv[]) try
@@ -14,8 +16,16 @@ int main(int argc, char * argv[]) try
     // Configure and start the pipeline
     p.start();
 
+    VideoCapture cap;
+    if(!cap.open(0)) return 0;
     while (true)
     {
+        Mat frame;
+        cap >> frame;
+        if( frame.empty() ) break; // end of video stream
+        imshow("this is you, smile! :)", frame);
+        if( waitKey(10) == 27 ) break; // stop capturing by pressing ESC 
+
         // Block program until frames arrive
         rs2::frameset frames = p.wait_for_frames();
 
