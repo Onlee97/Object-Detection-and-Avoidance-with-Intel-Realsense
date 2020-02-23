@@ -102,13 +102,8 @@ def main(pipeline = None):
 	if pipeline == None:
 		pipeline = startRsPipeline()
 
-	
-
-
-	
 	try:
-		# Create a context object. This object owns the handles to all connected realsense devices
-
+		# Create a context object. This object owns the handles to all connected realsense device
 		while True:
 			# This call waits until a new coherent set of frames is available on a device
 			# Calls to get_frame_data(...) and get_frame_timestamp(...) on a device will return stable values until wait_for_frames(...) is called
