@@ -5,8 +5,8 @@
 ##      Open CV and Numpy integration        ##
 ###############################################
 
-import sys
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+# import sys
+# sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 import os
 import pyrealsense2 as rs
 import numpy as np
@@ -94,10 +94,14 @@ def detectObject(net, classNames, frame, depth_frame):
 
     return frame
 
-def main():
-    l = "tvmonitor: 86% 2.53 meters away"
-    os.system("spd-say {l}".format(l=l))
-    pipeline = startRsPipeline()
+def main(pipeline=None):
+    # l = "You are now in descriptive mode"
+    # os.system("spd-say {l}".format(l=l))
+    # time.sleep(1)
+
+    if pipeline == None:
+        pipeline = startRsPipeline()
+
     net, classNames = initializeNet()
     try:
         while True:

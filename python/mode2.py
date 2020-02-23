@@ -5,8 +5,8 @@
 ##      Open CV and Numpy integration        ##
 ###############################################
 
-import sys
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+# import sys
+# sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
 import pyrealsense2 as rs
 import numpy as np
