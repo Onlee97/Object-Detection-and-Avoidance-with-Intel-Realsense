@@ -10,7 +10,7 @@ class Evaluator(object):
 
     def __init__(self, model,
                  data_path='preprocessed_data/',
-                 images_path='iaprtc12/',
+                 images_path='',
                  log_filename='data_parameters.log',
                  test_data_filename='test_data.txt',
                  word_to_id_filename='word_to_id.p',
@@ -39,12 +39,12 @@ class Evaluator(object):
 
     def display_caption(self, image_file=None, data_name=None):
 
-        if data_name == 'ad_2016':
-            test_data = self.test_data[self.test_data['image_names'].str.contains('ad_2016')]
-        elif data_name == 'iaprtc12':
-            test_data = self.test_data[self.test_data['image_names'].str.contains('iaprtc12')]
-        else:
-            test_data = self.test_data
+        #if data_name == 'ad_2016':
+            #test_data = self.test_data[self.test_data['image_names'].str.contains('ad_2016')]
+        #elif data_name == 'iaprtc12':
+            #test_data = self.test_data[self.test_data['image_names'].str.contains('iaprtc12')]
+        #else:
+            #test_data = self.test_data
 
         if image_file is None:
             image_name = np.asarray(test_data.sample(1))[0][0]

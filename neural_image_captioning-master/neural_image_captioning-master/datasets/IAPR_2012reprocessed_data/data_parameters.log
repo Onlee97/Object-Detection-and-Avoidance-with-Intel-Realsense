@@ -1,5 +1,5 @@
-data_filename C:\Users\nomie\Desktop\neural_image_captioning-master\neural_image_captioning-master\datasets\IAPR_2012\IAPR_2012_captions.txt 
-dump_path C:\Users\nomie\Desktop\neural_image_captioning-master\neural_image_captioning-master\datasets\IAPR_2012reprocessed_data 
+data_filename /home/duy/Eye_for_Blind/neural_image_captioning-master/neural_image_captioning-master/datasets/IAPR_2012/IAPR_2012_captions.txt 
+dump_path /home/duy/Eye_for_Blind/neural_image_captioning-master/neural_image_captioning-master/datasets/IAPR_2012reprocessed_data 
 BOS: <S> 
 EOS: <E> 
 PAD: <P> 
@@ -13,4 +13,4 @@ initial_word_size: 4137
 words_removed_by_frequency_threshold 1971 
 current_word_size: 2166 
 cnn_extractor: inception 
-elapsed_time: 0.7969999999913853
+elapsed_time: 0.22174351899593603
