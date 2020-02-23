@@ -3,6 +3,7 @@
 
 #include <librealsense2/rs.hpp> // Include RealSense Cross Platform API
 #include <iostream>             // for cout
+#include <Windows.h>
 
 
 
@@ -62,12 +63,16 @@ int main(int argc, char * argv[]) try {
             //else {
                 //std::cout << "Object on the Front in " << z << " meters \r";
             //}
+                Beep(500, 200);
+                Sleep(20);
         }
         if (min_z_right < threshold_z) {
                 std::cout << "Object on the Right in " << min_z_right << " meters\r\n";
             //else {
                 //std::cout << "Object on the Front in " << z << " meters \r";
             //}
+                Beep(1000, 200);
+                Sleep(20);
         }
         
         // Distance from the camera to the object in the left of the image
