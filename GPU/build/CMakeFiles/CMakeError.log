@@ -1,0 +1,56 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7b71b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7b71b.dir/build.make CMakeFiles/cmTC_7b71b.dir/build
+make[1]: Entering directory '/home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b71b.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_7b71b.dir/CheckSymbolExists.c.o   -c /home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_7b71b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b71b.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_7b71b.dir/CheckSymbolExists.c.o  -o cmTC_7b71b 
+CMakeFiles/cmTC_7b71b.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
+CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7b71b.dir/build.make:97: recipe for target 'cmTC_7b71b' failed
+make[1]: *** [cmTC_7b71b] Error 1
+make[1]: Leaving directory '/home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7b71b/fast' failed
+make: *** [cmTC_7b71b/fast] Error 2
+
+File /home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_dbabc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dbabc.dir/build.make CMakeFiles/cmTC_dbabc.dir/build
+make[1]: Entering directory '/home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dbabc.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_dbabc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_dbabc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dbabc.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_dbabc.dir/CheckFunctionExists.c.o  -o cmTC_dbabc -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_dbabc.dir/build.make:97: recipe for target 'cmTC_dbabc' failed
+make[1]: *** [cmTC_dbabc] Error 1
+make[1]: Leaving directory '/home/jetbot/Eye-for-Blind/GPU/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_dbabc/fast' failed
+make: *** [cmTC_dbabc/fast] Error 2
+
+
