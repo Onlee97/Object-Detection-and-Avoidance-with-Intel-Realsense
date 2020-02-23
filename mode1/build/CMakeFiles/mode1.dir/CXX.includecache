@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jetbot/Eye-for-Blind/mode1/rs-hello-realsense.cpp
+librealsense2/rs.hpp
+-
+iostream
+-
+
