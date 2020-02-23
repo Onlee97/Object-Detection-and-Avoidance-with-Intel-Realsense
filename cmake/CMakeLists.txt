@@ -1,13 +1,17 @@
-cmake_minimum_required(VERSION 3.1)
-# Enable C++11
-project(capture)
-find_package(OpenCV REQUIRED)
+cmake_minimum_required(VERSION 3.1.0)
+
+project(rs2)
+
+# Find librealsense2 installed package
 find_package(realsense2 REQUIRED)
 
+# Enable C++11
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-#SET(OpenCV_DIR /home/duy/opencv installation/installation/OpenCV-master/lib/cmake/opencv4)
 
-add_executable(capture test.cpp)
+# Add the application sources to the target
+add_executable(${PROJECT_NAME} rs2.cpp)
 
-target_link_libraries(capture ${OpenCV_LIBS} ${realsense2_LIBS})
+# Link librealsense2 to the target
+target_link_libraries(${PROJECT_NAME} ${realsense2_LIBRARY})
+

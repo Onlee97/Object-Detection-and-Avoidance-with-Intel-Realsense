@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/rs2.dir/rs2.cpp.o  -o rs2 -rdynamic /usr/local/lib/librealsense2.so.2.32.1 -Wl,-rpath,/usr/local/lib 

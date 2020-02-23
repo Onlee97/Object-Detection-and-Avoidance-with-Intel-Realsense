@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /home/duy/Desktop/Eye-for-Blind/cmake
 CMAKE_BINARY_DIR = /home/duy/Desktop/Eye-for-Blind/cmake/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/capture.dir
+# Target rules for target CMakeFiles/rs2.dir
 
 # All Build rule for target.
-CMakeFiles/capture.dir/all:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/depend
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles --progress-num=1,2 "Built target capture"
-.PHONY : CMakeFiles/capture.dir/all
+CMakeFiles/rs2.dir/all:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/depend
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles --progress-num=1,2 "Built target rs2"
+.PHONY : CMakeFiles/rs2.dir/all
 
 # Include target in all.
-all: CMakeFiles/capture.dir/all
+all: CMakeFiles/rs2.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/capture.dir/rule: cmake_check_build_system
+CMakeFiles/rs2.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/capture.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rs2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/duy/Desktop/Eye-for-Blind/cmake/build/CMakeFiles 0
-.PHONY : CMakeFiles/capture.dir/rule
+.PHONY : CMakeFiles/rs2.dir/rule
 
 # Convenience name for target.
-capture: CMakeFiles/capture.dir/rule
+rs2: CMakeFiles/rs2.dir/rule
 
-.PHONY : capture
-
-# clean rule for target.
-CMakeFiles/capture.dir/clean:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/clean
-.PHONY : CMakeFiles/capture.dir/clean
+.PHONY : rs2
 
 # clean rule for target.
-clean: CMakeFiles/capture.dir/clean
+CMakeFiles/rs2.dir/clean:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/clean
+.PHONY : CMakeFiles/rs2.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/rs2.dir/clean
 
 .PHONY : clean
 

@@ -114,7 +114,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=capture
+CMAKE_PROJECT_NAME:STATIC=rs2
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -176,6 +176,12 @@ capture_SOURCE_DIR:STATIC=/home/duy/Desktop/Eye-for-Blind/cmake
 
 //The directory containing a CMake configuration file for realsense2.
 realsense2_DIR:PATH=/usr/local/lib/cmake/realsense2
+
+//Value Computed by CMake
+rs2_BINARY_DIR:STATIC=/home/duy/Desktop/Eye-for-Blind/cmake/build
+
+//Value Computed by CMake
+rs2_SOURCE_DIR:STATIC=/home/duy/Desktop/Eye-for-Blind/cmake
 
 
 ########################

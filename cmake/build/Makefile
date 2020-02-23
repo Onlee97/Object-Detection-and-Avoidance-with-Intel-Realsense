@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named capture
+# Target rules for targets named rs2
 
 # Build rule for target.
-capture: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 capture
-.PHONY : capture
+rs2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rs2
+.PHONY : rs2
 
 # fast build rule for target.
-capture/fast:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/build
-.PHONY : capture/fast
+rs2/fast:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/build
+.PHONY : rs2/fast
 
-test.o: test.cpp.o
+rs2.o: rs2.cpp.o
 
-.PHONY : test.o
+.PHONY : rs2.o
 
 # target to build an object file
-test.cpp.o:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/test.cpp.o
-.PHONY : test.cpp.o
+rs2.cpp.o:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/rs2.cpp.o
+.PHONY : rs2.cpp.o
 
-test.i: test.cpp.i
+rs2.i: rs2.cpp.i
 
-.PHONY : test.i
+.PHONY : rs2.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/test.cpp.i
-.PHONY : test.cpp.i
+rs2.cpp.i:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/rs2.cpp.i
+.PHONY : rs2.cpp.i
 
-test.s: test.cpp.s
+rs2.s: rs2.cpp.s
 
-.PHONY : test.s
+.PHONY : rs2.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) -f CMakeFiles/capture.dir/build.make CMakeFiles/capture.dir/test.cpp.s
-.PHONY : test.cpp.s
+rs2.cpp.s:
+	$(MAKE) -f CMakeFiles/rs2.dir/build.make CMakeFiles/rs2.dir/rs2.cpp.s
+.PHONY : rs2.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... capture"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... rs2"
+	@echo "... rs2.o"
+	@echo "... rs2.i"
+	@echo "... rs2.s"
 .PHONY : help
 
 

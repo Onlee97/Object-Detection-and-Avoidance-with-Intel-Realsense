@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/rs.dir/rs2.cpp.o  -o rs -rdynamic 
