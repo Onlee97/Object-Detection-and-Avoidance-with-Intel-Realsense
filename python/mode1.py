@@ -1,10 +1,11 @@
-## License: Apache 2.0. See LICENSE file in root directory.
+# License: Apache 2.0. See LICENSE file in root directory.
 ## Copyright(c) 2015-2017 Intel Corporation. All Rights Reserved.
 
 #####################################################
 ## librealsense tutorial #1 - Accessing depth data ##
 #####################################################
-
+#import sys
+#sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
 # First import the library
 import pyrealsense2 as rs
@@ -26,15 +27,24 @@ def startRsPipeline():
 delayTime = 0.5
 def beepLeft(duration):
 	freq = 440
+	duration = 0.2
 	#os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
 	os.system('spd-say "left"')
 	time.sleep(delayTime)
 
 def beepRight(duration):
-	freq = 1000
+	freq = 880
+	duration = 0.2
 	#os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
 	os.system('spd-say "right"')
 	time.sleep(delayTime)
+  
+def beepFront(duration):
+    freq = 1000
+    duration = 0.2
+    #os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
+	  os.system('spd-say "front"')
+    time.sleep(delayTime)
 
 def loop(pipeline):
 	width = 640
@@ -53,7 +63,7 @@ def loop(pipeline):
 	minXLeft = 0
 	step = 5
 
-	leftThreshold = int(width/5)
+	leftThreshold = int(width/6)
 
 	for x in range(leftThreshold,int(width/2),step):			
 		for y in range(0,int(height), step):
@@ -66,7 +76,7 @@ def loop(pipeline):
 	minDepthRight = width
 	minXRight = 0
 
-	rightThreshold = int(width*4/5)
+	rightThreshold = int(width*5/6)
 	for x in range(int(width/2),rightThreshold, step):			
 		for y in range(0,int(height), step):
 			dist = depth_frame.get_distance(x, y)
@@ -74,16 +84,24 @@ def loop(pipeline):
 				minDepthRight = dist
 				minXRight = x
 
-	depthThreshold = 0.5
+	depthThreshold = 0.6
 	# print(minDepthRight, minDepthLeft)
 	# if minDepthRight < depthThreshold and minDepthRight < depthThreshold:
 	# 	print("Right: ", minDepthRight, " | Left: ", minDepthLeft)
 	if minDepthRight < depthThreshold:
-		print("Right: ", minDepthRight)
-		beepRight(minDepthRight)
-	if minDepthLeft < depthThreshold:
-		print("Left: ", minDepthLeft)
-		beepLeft(minDepthLeft)
+			if minXRight < (width*3/4):
+				print("Front: ", minDepthRight)
+				beepFront(minDepthRight)
+			else:
+				print("Right: ", minDepthRight)
+				beepRight(minDepthRight)
+		if minDepthLeft < depthThreshold:
+			if minXLeft > (width/4):
+				print("Front: ", minDepthLeft)
+				beepFront(minDepthLeft)
+			else:
+				print("Left: ", minDepthLeft)
+				beepLeft(minDepthLeft)
 	# depth_image = np.asanyarray(depth_frame.get_data())
 	# color_image = np.asanyarray(color_frame.get_data())
 
@@ -124,3 +142,4 @@ def main(pipeline = None):
 		pipeline.stop()
 		print(e)
 		pass
+
