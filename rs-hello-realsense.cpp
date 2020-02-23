@@ -28,28 +28,46 @@ int main(int argc, char * argv[]) try {
         int width = depth.get_width();
         int height = depth.get_height();
 
-        float min_z = 0.1;
+        float min_z_left = 10;
+        float min_z_right = 10;
         float threshold_z = 0.5;
-        int min_x = 0;
-        int min_y = 0;
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        int min_x_left = width;
+        //int min_y_left = height;
+        int min_x_right = width;
+        //int min_y_right = height;
+        //int left_x = 100;
+        for (int x = 0; x < width/2; x = x + 10) {
+            for (int y = 0; y < height; y = y + 10) {
                 float z = depth.get_distance(x, y);
-                if (z != 0 && z < threshold_z) {
-                    min_x = x;
-                    min_y = y;
-                    if (x < width / 3) {
-                        std::cout << "Object on the Left in " << z << " meters \r";
-                    }
-                    else if (x > width * 2 / 3) {
-                    
-                        std::cout << "Object on the Right in " << z << " meters \r";
-                    }
-                    else {
-                        std::cout << "Object on the Front in " << z << " meters \r";
-                    }
+                if (z != 0 && z < min_z_left) {
+                    min_z_left = z;
+                    min_x_left = x;
+                    //min_y_left = y;
                 }
             }
+        }
+        
+        for (int x = width / 2; x < width; x = x + 10) {
+            for (int y = 0; y < height; y = y + 10) {
+                float z = depth.get_distance(x, y);
+                if (z != 0 && z < min_z_right) {
+                    min_z_right = z;
+                    min_x_right = x;
+                    //min_y_right = y;
+                }
+            }
+        }
+        if (min_z_left < threshold_z) {
+                std::cout << "Object on the Left in " << min_z_left << " meters \r\n";
+            //else {
+                //std::cout << "Object on the Front in " << z << " meters \r";
+            //}
+        }
+        if (min_z_right < threshold_z) {
+                std::cout << "Object on the Right in " << min_z_right << " meters\r\n";
+            //else {
+                //std::cout << "Object on the Front in " << z << " meters \r";
+            //}
         }
         
         // Distance from the camera to the object in the left of the image
