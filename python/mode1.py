@@ -16,7 +16,7 @@ import os
 def beepLeft(duration):
 	freq = 440
 	#os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
-	os.system('spd-say "left"')
+os.system('spd-say "left"')
 
 def beepRight(duration):
 	freq = 1000
