@@ -7,10 +7,17 @@
 #include <string>
 #include <ctime>
 #include <sapi.h>
-#include <iostream>
 #include <windows.h>
 #include "../cv-helpers.hpp"
 #include <time.h>
+#include <string>       // std::string
+#include <iostream>     // std::cout
+#include <sstream>      // std::ostringstream
+#include "stdafx.h"
+#include "targetver.h"
+#include <stdio.h>
+#include <tchar.h>
+//#include <speechapi_cxx.h>
 
 const size_t inWidth = 150;
 const size_t inHeight = 150;
@@ -24,18 +31,84 @@ const char* classNames[] = { "background",
                              "motorbike", "person", "pottedplant",
                              "sheep", "sofa", "train", "tvmonitor" };
 
+int timeDetect = 0;
+
+
+using namespace std;
+//using namespace Microsoft::CognitiveServices::Speech;
+
+//void recognizeSpeech()
+//{
+//    auto config = SpeechConfig::FromSubscription("6c7a25f0232240df9914f1965919bb04", "westus");
+//
+//    // Create a sppech recognizer
+//    auto recognizer = SpeechRecognizer::FromConfig(config);
+//    cout << "Say something...\n";
+//
+//    auto result = recognizer->RecognizeOnceAsync().get();
+//
+//    if (result->Reason == ResultReason::RecognizedSpeech)
+//    {
+//        cout << "We recognized: " << result->Text << std::endl;
+//    }
+//    else if (result->Reason == ResultReason::NoMatch)
+//    {
+//        cout << "NOMATCH: Speech could not be recognized." << std::endl;
+//    }
+//    else if (result->Reason == ResultReason::Canceled)
+//    {
+//        auto cancellation = CancellationDetails::FromResult(result);
+//        cout << "CANCELED: Reason=" << (int)cancellation->Reason << std::endl;
+//
+//        if (cancellation->Reason == CancellationReason::Error)
+//        {
+//            cout << "CANCELED: ErrorCode= " << (int)cancellation->ErrorCode << std::endl;
+//            cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
+//            cout << "CANCELED: Did you update the subscription info?" << std::endl;
+//        }
+//    }
+//}
+//
+//int wmain()
+//{
+//    try
+//    {
+//        recognizeSpeech();
+//    }
+//    catch (exception e)
+//    {
+//        cout << e.what();
+//    }
+//    cout << "Please press a key to continue. \n";
+//    cin.get();
+//    return 0;
+//}
+
 
 int main(int argc, char** argv) try
 {
     using namespace cv;
     using namespace cv::dnn;
     using namespace rs2;
-    using namespace std;
+
+    ISpVoice* pVoice = NULL;
+
+    if (FAILED(::CoInitialize(NULL)))
+        return FALSE;
+
+    HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void**)&pVoice);
+    if (SUCCEEDED(hr)) {
+        hr = pVoice->Speak(L"What would you like to look for", 0, NULL);
+        pVoice->Release();
+        pVoice = NULL;
+    }
 
     const char* objectToDetect = "person";
 
     Net net = readNetFromCaffe("MobileNetSSD_deploy.prototxt",
         "MobileNetSSD_deploy.caffemodel");
+    //net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA);  // Need to rewrite "cv2" to C++
+    //net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA);  // Need to rewrite "cv2" to C++
 
     // Start streaming from Intel RealSense Camera
     pipeline pipe;
@@ -120,17 +193,25 @@ int main(int argc, char** argv) try
                 // use depht data in general
                 Scalar m = mean(depth_mat(object));
 
-                double beepFrequency = 52+260*m[0];  // The closer the object, the higher the beepFrequency.
+                double beepFrequency = 46*m[0]*m[0] + 59*m[0];  // The closer the object, the higher the beepFrequency.
 
                 ostringstream ss;
+
                 if (classNames[objectClass] == objectToDetect) {
                     ss << classNames[objectClass] << " ";
                     ss << setprecision(2) << m[0] << " meters away";
-                    //ss << std::setprecision(2) << beepFrequency << " beeps away";
+                    if (timeDetect == 0)
+                    {
+                        timeDetect += 1;
+                        string s = ss.str();
+                        wstring stemp = wstring(s.begin(), s.end());
+                        LPCWSTR sw = stemp.c_str();
+                        ISpVoice* pVoice = NULL;
+                        HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void**)&pVoice);
+                        hr = pVoice->Speak(sw, 0, NULL);
+                    }
                     Beep(1000,300);
                     Sleep(beepFrequency);
-                    //Sleep(beepFrequency);
-                    //cout << '\a';
                    
                 }
                 else {
