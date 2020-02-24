@@ -12,8 +12,13 @@ import pyrealsense2 as rs
 import numpy as np
 import cv2
 import time
+from PIL import Image
+from object_detection_model import *
+from keras.models import load_model
+
 
 def startRsPipeline():
+
 # Configure depth and color streams
 	pipeline = rs.pipeline()
 	config = rs.config()
@@ -139,4 +144,6 @@ def main(pipeline=None):
 		pipeline.stop()
 
 if __name__ == "__main__":
+
 	main()
+
